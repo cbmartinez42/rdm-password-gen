@@ -54,6 +54,31 @@ header {
   min-height: 100px;
 }
 
+/* setting up grid layout for password selections */
+.form{
+  display: grid;
+  grid-template-columns: auto auto;
+  row-gap: 1rem;
+  column-gap: 3rem;
+}
+
+/* align slider and number input so that they're centered */
+.amount-container {
+  display: flex;
+  align-items: center;
+}
+
+/* set width so that up to three numbers display */
+.number-input {
+  width: 3rem;
+}
+
+/* justify labels to appear more attractive */
+label {
+  justify-self: right;
+  font-weight: bold;
+}
+
 .card-footer {
   text-align: center;
 }
