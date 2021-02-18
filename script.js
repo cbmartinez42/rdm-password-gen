@@ -1,69 +1,40 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
-// link charAmount slider and input box
-const charAmtRange = document.getElementById
-('charAmtRange')
-const charAmtNumber = document.getElementById
-('charAmtNumber')
-
-// set const for checkbox values
-const includeUppercaseElement = document.getElementById
-('includeUppercase')
-const includeNumbersElement = document.getElementById
-('includeNumbers')
-const includeSpecialCharElement = document.getElementById
-('includeSpecialChar')
-
-const lowercaseCharCodes = arrayFromLowToHigh(97, 122)
-const uppercaseCharCodes = arrayFromLowToHigh(65, 90)
-const numberCharCodes = arrayFromLowToHigh(48, 57)
-const specialCharCodes = arrayFromLowToHigh(33, 47).concat(
-  arrayFromLowToHigh(58,64)).concat(
-  arrayFromLowToHigh(91, 96)).concat(
-  arrayFromLowToHigh(123, 126))
-
-charAmtNumber.addEventListener('input', syncCharacterAmount)
-charAmtRange.addEventListener('input', syncCharacterAmount)
-
-function arrayFromLowToHigh(low, high) {
-  const array = []
-  for (let i = low; i <= high; i++) {
-    array.push(i)
-  }
-  return array
-}
-
-function syncCharacterAmount(e) {
-  const value = e.target.value
-  charAmtNumber.value = value
-  charAmtRange.value = value
-}
-
-generateBtn.addEventListener('submit', e => {
-  e.preventDefault()
-  const charAmtNumber = charAmtNumber.value
-  const includeUppercase = includeUppercaseElement.checked
-  const includeNumbers = includeNumbersElement.checked
-  const includeSpecialChar = includeSpecialCharElement.checked
-  const password = generatePassword(charAmtNumber, includeUppercase, includeNumbers, includeSpecialChar)
-
-})
-
-function generatePassword(charAmount, includeUppercase, includeNumbers, includeSpecialChar) {
-  String.fromCharCode(65)
-  let charCodes = lowercaseCharCodes
-  if (includeUppercase) charCodes = charCodes.concat(uppercaseCharCodes)
-  if (includeNumbers) charCodes= charCodes.concat(numberCharCodes)
-  if (includeSpecialChar) charCodes = charCodes.concat(specialCharCodes)
-  console.log(lowercaseCharCodes)
-}
-
+// variables for password characters
+var lowercase = ["a", "b", "c", "d", "e", "f", "g", "h", "j", "k", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+var uppercase = ["A", "B", "C", "D", "E", "F", "G", "H", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
+var numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+var symbols = ['!', '#', '$', '%', '&', "'", '(', ')', '*', '+', ',', '-', '.', '/', ':', ';', '<', '=', '>', '?', '@', '[']
+// symbols that begin an error string
+// , '\', ']', '^', '_', '`', '{', '|', '}', '~'
 
 // Write password to the #password input
 function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
+  // user must choose length (8-128 characters)
+var passLength = prompt("How long would you like the password to be? (choose between 8-128");
+// validate if it's a number
+// validate if it's between 8 and 128
+    if (isNaN(passLength) !== false) {
+      alert("Password length must be a NUMBER between 8 and 128. Please try again");
+      var passLength = prompt("How long would you like the password to be? (choose between 8-128)");
+    } else if (enter < "8" || enter > "128") {
+      alert("Password length must be a number BETWEEN 8 and 128. Please try again");
+      var passLength = prompt("How long would you like the password to be? (choose between 8-128)");
+    } else {
+      alert("Your password will have " + passLength + " characters")
+    }
+
+
+// user must choose if they want uppercase
+var upperCase = window.confirm("Do you want UPPERCASE letters included?")
+// user must choose if they want numbers
+var numbers = window.confirm("Do you want numbers (1, 2, 3 ...) included?")
+// user must choose if they want symbols
+var symbols = window.confirm("Do you want symbols ($, %, & ...) included?")
+
+var password = generatePassword();
+var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
 
@@ -71,4 +42,3 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
-
