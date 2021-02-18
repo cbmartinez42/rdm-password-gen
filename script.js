@@ -12,34 +12,59 @@ var symbols = ['!', '#', '$', '%', '&', "'", '(', ')', '*', '+', ',', '-', '.', 
 // Write password to the #password input
 function writePassword() {
   // user must choose length (8-128 characters)
-var passLength = prompt("How long would you like the password to be? (choose between 8-128)");
-// validate that a entry is made and whether it's a number
-// validate if it's between 8 and 128
-    while ((passLength = "") === true) {
-      alert('Please enter a number between 8 and 128');
-      var passLength = prompt("How long would you like the password to be? (choose between 8-128)");
-    } 
-    passLength.isInteger; {
-      alert("Hey now - Password length must be a NUMBER between 8 and 128. Please try again");
-      var passLength = prompt("How long would you like the password to be? (choose between 8-128)");
-    } 
-    while (passLength < 8 || passLength > 128) {
-      alert("Don't forget - Password length must be a number BETWEEN 8 and 128. Please try again");
-      var passLength = prompt("How long would you like the password to be? (choose between 8-128)");
-    } 
-      alert("Your password will have " + passLength + " characters")
-    
+  var passLength = prompt("How long would you like the password to be? (choose between 8-128)");
+
+  // validate that a entry is made
+  while ((passLength = "") === true) {
+    alert('Please enter a number between 8 and 128');
+    var passLength = prompt("How long would you like the password to be? (choose between 8-128)");
+  } 
+  // validate that entry is a number
+  passLength.isInteger; {
+    alert("Hey now - Password length must be a NUMBER between 8 and 128. Please try again");
+    var passLength = prompt("How long would you like the password to be? (choose between 8-128)");
+  } 
+    // validate if it's between 8 and 128
+  while (passLength < 8 || passLength > 128) {
+    alert("Don't forget - Password length must be a number BETWEEN 8 and 128. Please try again");
+    var passLength = prompt("How long would you like the password to be? (choose between 8-128)");
+  } 
+    alert("Your password will have " + passLength + " characters")
+  
+  // user must choose if they want lowercase
+  var confirmLowercase = confirm("Do you want lowercase letters included? Click OK for Yes, Cancel for No")  
+  // user must choose if they want uppercase
+  var confirmUppercase = confirm("Do you want UPPERCASE letters included? Click OK for Yes, Cancel for No")
+  // user must choose if they want numbers
+  var confirmNumbers = confirm("Do you want numbers (1, 2, 3 ...) included? Click OK for Yes, Cancel for No")
+  // user must choose if they want symbols
+  var confirmSymbols = confirm("Do you want symbols ($, %, & ...) included? Click OK for Yes, Cancel for No")
+
+  // set empty array to concat user choices into
+  var passwordCharacters = []
+
+  // take user choices and concat them
+if (confirmLowercase) {
+  passwordCharacters = passwordCharacters.concat(lowercase)
+  }
+
+if (confirmUppercase) {
+  passwordCharacters = passwordCharacters.concat(uppercase)
+  }
+
+if (confirmNumbers) {
+  passwordCharacters = passwordCharacters.concat(numbers)
+  }
+
+if (confirmSymbols) {
+  passwordCharacters = passwordCharacters.concat(symbols)
+  }
+ 
 
 
-// user must choose if they want uppercase
-var upperCase = window.confirm("Do you want UPPERCASE letters included?")
-// user must choose if they want numbers
-var numbers = window.confirm("Do you want numbers (1, 2, 3 ...) included?")
-// user must choose if they want symbols
-var symbols = window.confirm("Do you want symbols ($, %, & ...) included?")
 
-var password = generatePassword();
-var passwordText = document.querySelector("#password");
+  var password = generatePassword();
+  var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
 
