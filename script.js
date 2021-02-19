@@ -11,46 +11,29 @@ const symbols = ['!', '#', '$', '%', '&', "'", '(', ')', '*', '+', ',', '-', '.'
 
 // Write password to the #password input
 function writePassword() {
-  // user must choose length (8-128 characters)
-  var passLength = prompt("How long would you like the password to be? (choose between 8-128)");
-
+  var validated = false
   // validate that an entry is made, is a number, and is between 8-128  
-  while(true) {
+  while(!validated) {
+    // prompt for user input and parse into a number
+    var passLength = parseInt(prompt("How long would you like the password to be? (choose between 8-128)"));
+    console.log('before if statements')
     if(passLength == "") {
-      alert('Please enter a number between 8 and 128');
-      var passLength = prompt("How long would you like the password to be? (choose between 8-128)");
-    } else if(passLength !== Number.Integer) {
+      alert('Please enter a number between 8 and 128. You did not enter a number');
+      validated = false
+    } else if(typeof passLength === "string") {
       alert("Hey now - Password length must be a NUMBER between 8 and 128. Please try again");
-      var passLength = prompt("How long would you like the password to be? (choose between 8-128)");
+      validated = false
     }
-    else if(passLength < 8 || passLength > 128);
-    alert("Don't forget - Password length must be a number BETWEEN 8 and 128. Please try again");
-    var passLength = prompt("How long would you like the password to be? (choose between 8-128)");
+    else if(passLength < 8 || passLength > 128) {
+      alert("Don't forget - Password length must be a number BETWEEN 8 and 128. Please try again");
+      validated = false
+    } else {validated = true}
 
-    // how do I make this alert show if the while statement returns all false?
-    // alert("I'm sorry, but you must choose a number between the range of 8 and 128. Please double check your entry and click 'Generate Password' again");
-    break
   }
-
     alert("Your password will have " + passLength + " characters")
 
-
-  // // validate that a entry is made
-  // while ((passLength === "") === true) {
-
-  // } 
-  // // validate that entry is a number
-  // while (Number.isInteger(passLength) === false) {
-  //   if (Number.isInteger(passLength) === true) {
-  //     break;
-  //   }
-
-  // } 
-  //   // validate if it's between 8 and 128
-  // while (passLength < 8 || passLength > 128) {
-
-  // } 
-
+// convert passLength from a string to a number
+  // passLength = parseInt(passLength)
   
   // user must choose if they want lowercase
   var confirmLowercase = confirm("Do you want lowercase letters included? Click OK for Yes, Cancel for No")  
@@ -70,20 +53,20 @@ function writePassword() {
   var passwordCharacters = []
 
   // take user choices and concat them
-if (confirmLowercase) {
-  passwordCharacters = passwordCharacters.push(lowercase)
+  if (confirmLowercase) {
+    passwordCharacters = passwordCharacters.concat(lowercase)
   } 
   
   if (confirmUppercase) {
-  passwordCharacters = passwordCharacters.push(uppercase)
+    passwordCharacters = passwordCharacters.concat(uppercase)
   } 
   
   if (confirmNumbers) {
-  passwordCharacters = passwordCharacters.push(numbers)
+    passwordCharacters = passwordCharacters.push(numbers)
   } 
   
   if (confirmSymbols) {
-  passwordCharacters = passwordCharacters.push(symbols)
+    passwordCharacters = passwordCharacters.push(symbols)
   }
  
 // empty string for passwordResults
