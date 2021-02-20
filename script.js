@@ -2,11 +2,11 @@
 var generateBtn = document.querySelector("#generate");
 
 // global variables for password characters
-const lowercase = ["a", "b", "c", "d", "e", "f", "g", "h", "j", "k", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
-const uppercase = ["A", "B", "C", "D", "E", "F", "G", "H", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
-const numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
-const symbols = ['!', '#', '$', '%', '&', "'", '(', ')', '*', '+', ',', '-', '.', '/', ':', ';', '<', '=', '>', '?', '@', '[']
-// symbols that begin an error string
+var lowercase = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'j', 'k', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+var uppercase = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+var numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+var symbols = ['!', '#', '$', '%', '&', "'", '(', ')', '*', '+', ',', '-', '.', '/', ':', ';', '<', "=", '>', '?', '@', '['];
+// symbols that begin an error in array
 // , '\', ']', '^', '_', '`', '{', '|', '}', '~'
 
 // Write password to the #password input
@@ -16,25 +16,29 @@ function writePassword() {
   while(!validated) {
     // prompt for user input and parse into a number
     var passLength = parseInt(prompt("How long would you like the password to be? (choose between 8-128)"));
-    console.log('before if statements')
     if(passLength == "") {
       alert('Please enter a number between 8 and 128. You did not enter a number');
       validated = false
-    } else if(typeof passLength === "string") {
+
+      // this is returning Nan value. maybe check to see if it's a number instead of string? or using !=== ?
+    } else if(typeof passLength == 'string') {
+    // } else if((Number.isInteger(passLength) == false) {
       alert("Hey now - Password length must be a NUMBER between 8 and 128. Please try again");
       validated = false
     }
     else if(passLength < 8 || passLength > 128) {
       alert("Don't forget - Password length must be a number BETWEEN 8 and 128. Please try again");
       validated = false
-    } else {validated = true}
+    } else {
+      validated = true
+    }
 
   }
-    alert("Your password will have " + passLength + " characters")
+    alert("Your password will have " + passLength + " characters");
 
-// convert passLength from a string to a number
-  // passLength = parseInt(passLength)
-  
+   // set empty array to concat user choices into
+    var passwordCharacters = [];
+
   // user must choose if they want lowercase
   var confirmLowercase = confirm("Do you want lowercase letters included? Click OK for Yes, Cancel for No")  
   // user must choose if they want uppercase
@@ -49,36 +53,27 @@ function writePassword() {
     return;
   }
 
-  // set empty array to concat user choices into
-  var passwordCharacters = []
-
   // take user choices and concat them
-  if (confirmLowercase) {
-    passwordCharacters = passwordCharacters.concat(lowercase)
-  } 
+  if (confirmLowercase) passwordCharacters = passwordCharacters.concat(lowercase)
   
-  if (confirmUppercase) {
-    passwordCharacters = passwordCharacters.concat(uppercase)
-  } 
+  if (confirmUppercase) passwordCharacters = passwordCharacters.concat(uppercase)
   
-  if (confirmNumbers) {
-    passwordCharacters = passwordCharacters.push(numbers)
-  } 
+  if (confirmNumbers) passwordCharacters = passwordCharacters.concat(numbers)
+
+  if (confirmSymbols) passwordCharacters = passwordCharacters.concat(symbols)
   
-  if (confirmSymbols) {
-    passwordCharacters = passwordCharacters.push(symbols)
-  }
- 
+console.log(passwordCharacters)  
 // empty string for passwordResults
-var passwordResults = ""
+var generatePassword = [];
 
+// run to randomly generate password
 for (var i = 0; i < passLength; i++)
-  passwordResults = passwordResults + passwordCharacters[Math.floor(Math.random() * passLength)];
+  generatePassword = generatePassword + passwordCharacters[Math.floor(Math.random() * passwordCharacters.length)];
 
-console.log(passwordResults)
+console.log(generatePassword)
 
 
-  var password = generatePassword();
+  var password = generatePassword;
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
