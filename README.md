@@ -4,23 +4,21 @@ This is an application utilizing Javascript to randomly generate a password base
 
 
 Included in this application are:
-* HTML code utilizing semantic elements to optimize for accessibility
-    * Utilized `<header>`, `<footer>` and `<nav>` elements to easily distinguish from the rest of the body 
-    * Utilized `<section>`, `<figure>` and `<figcaption>` to more easily identify main items as well as images
-    * Implimented `alt` attribute for images to improve accessibility as well 
-* Utilized efficient CSS code
-    * Consolidated classes where possible to reduce clutter in code
-    * Implimented `--var` options to reduce the need to retype or copy/paste redundant colors for fonts
+* Utilized loops to provide needed operations within JS
+    * Utilized a `while` loop to validate user input to ensure that the script function could proceed properly
+    * Utilized a `for` loop to randomly assign characters to the password according to the user specified criteria
+
+* Prompt, alert and confirm to provide a user-friendly UI/UX
+    * In addition to required prompts for user-requested character types, included a `confirm` dialogue box to allow user to exit the script if they accidently entered the wrong number of characters
+    * 
 
 Challenges I encountered
-* Due to the limited time to cover subjects in classes, I researched how to impliment flexboxes in order to further familiarize myself with manipulate the box model to be able to design the page the way I intended it to look
-    * Sizing of the individual flex items became an issue, in part due to cluttered code. As I familiarized myself and became more comfortable with flexbox attributes, I was able to reduce the clutter 
-    * Chrome Developer Tools were a very helpful resource, allowing me to play with different attributes and immediately see what impact my changes were having before adjusting my code
-* While we were provided the example application's code, I tried not to rely on it, as I wanted the portfolio to be my own work. 
-* When necessary, I utilized office hours, reached out to classmates, and sought the advice and expertise of my tutor
+* After initially struggling with the loop to validate the user input, I was able to validate the input with a single line of code, keeping the code clean and succinct 
+* I also had difficulty with the method to choose password characters randomly with first returning back as undefined, then returning back with commas. I eventually determined the culprit to be missing semicolons. 
+* An issue with the random selection method was found where the code was only choosing from the list of available characters up to the array index item number that correlated to the input for the password length. By changing my syntax correctly, the function now chooses from the entire array of available character types. 
 
 ## Credits
-Many thanks to the below individuals who provided input and suggestions
+Many thanks to the below individuals who provided input, suggestions, or played a "rubber ducky" role
 * Jay Yousef
 * Mim Armand
 * Stephen Simone
@@ -50,7 +48,7 @@ If any additional issues are found, or if there are any suggestions for improvem
 3. After downloading, open the .zip file and select "Extract All" from the top of the window that appears
 4. Access the content with your code editor by selecting `File > Open Folder` in your code editor menu. If only viewing in a browser, simply double click index.html to open in your default browser
 
-[https://cbmartinez42.github.io/cbm-portfolio-1/](https://cbmartinez42.github.io/cbm-portfolio-1/)
+[https://cbmartinez42.github.io/rdm-password-gen/](https://cbmartinez42.github.io/rdm-password-gen/)
 
 ---
 
@@ -58,4 +56,4 @@ These updates are covered under [GNU General Public License v3.0](./COPYING.txt)
 
 ## Screenshot below:
 
-<img src="./assets/images/portfolio-1.PNG">
+<img src="./assets/images/password-generator.gif">
