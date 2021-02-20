@@ -20,22 +20,20 @@ function writePassword() {
     } else {
       break
     }
-
   }
+  
   alert("Your password will have " + passLength + " characters");
 
   // set empty array to concat user choices into
   var passwordCharacters = [];
 
-  // user must choose if they want lowercase
+  // user must choose if they want lowercase, uppercase, numbers and/or symbols
   var confirmLowercase = confirm("Do you want lowercase letters included? Click OK for Yes, Cancel for No")  
-  // user must choose if they want uppercase
   var confirmUppercase = confirm("Do you want UPPERCASE letters included? Click OK for Yes, Cancel for No")
-  // user must choose if they want numbers
   var confirmNumbers = confirm("Do you want numbers (1, 2, 3 ...) included? Click OK for Yes, Cancel for No")
-  // user must choose if they want symbols
   var confirmSymbols = confirm("Do you want symbols ($, %, & ...) included? Click OK for Yes, Cancel for No")
 
+  // check that an entry was made
   if (!confirmLowercase && !confirmUppercase && !confirmNumbers && !confirmSymbols) {
     alert("You must choose at least one option for character type to continue. Please try again.");
     return;

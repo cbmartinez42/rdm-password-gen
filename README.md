@@ -25,6 +25,7 @@ Many thanks to the below individuals who provided input and suggestions
 * Mim Armand
 * Stephen Simone
 * Stacy Brown
+* Samuel Roth
 
 
 If any additional issues are found, or if there are any suggestions for improvement, please send an email to site developer Chris Martinez at cbmartinez42@gmail.com
